@@ -377,3 +377,75 @@ MIT License - See LICENSE file for details
 - For best performance, use the 7B model for daily coding and switch to 14B for complex tasks
 - The nomic-embed-text model is used automatically by Continue for embeddings
 - If you need to customize model parameters, use the Modelfile approach described above
+
+
+-----------------------
+Getting Free API Keys
+Groq (Recommended - Best Free Tier)
+1.	Go to https://console.groq.com/
+2.	Sign up (Google/GitHub)
+3.	Go to API Keys section
+4.	Create new key
+5.	Copy key (starts with gsk_)
+Google Gemini
+1.	Go to https://aistudio.google.com/
+2.	Sign in with Google account
+3.	Click "Get API key"
+4.	Create key
+5.	Copy key (starts with AIza)
+OpenRouter
+1.	Go to https://openrouter.ai/
+2.	Sign up (GitHub/Google)
+3.	Go to Keys section
+4.	Create new key
+5.	Copy key (starts with sk-or-)
+
+
+
+Step-by-Step Guide to Get Cloudflare Credentials
+1. Sign Up / Log In to Cloudflare
+1.	Go to: https://dash.cloudflare.com/
+2.	Sign up for a free account (email/password) or log in
+3.	You don't need a domain - you can use Workers AI without one
+2. Get Your Account ID
+Method 1: From the Dashboard
+1.	After logging in, you'll see the dashboard
+2.	Look at the right sidebar on the main page
+3.	You'll see "Account ID" under your account name
+4.	Click the copy icon to copy it
+Method 2: From Workers & Pages
+1.	Click on "Workers & Pages" in the left sidebar
+2.	Look at the right side of the page
+3.	Account ID is displayed in the "Account details" section
+Method 3: From URL
+•	When you're logged in, the URL looks like:
+https://dash.cloudflare.com/your-account-id/
+•	The string after dash.cloudflare.com/ is your Account ID
+3. Create an API Token
+1.	Go to API Tokens page:
+o	Click on your profile icon (top right)
+o	Select "My Profile"
+o	Click on "API Tokens" tab on the left
+o	OR go directly to: https://dash.cloudflare.com/profile/api-tokens
+2.	Create a new token:
+o	Click "Create Token" button
+o	Look for "Workers AI" template (or "Custom token")
+o	Click "Use template" next to Workers AI
+3.	Configure the token (if using custom):
+o	Token name: Anything you want (e.g., "Continue AI")
+o	Permissions:
+	Account → Workers AI → Edit
+	Account → Workers Scripts → Edit (optional, for deploying workers)
+o	Account Resources: Include → Your account
+o	Client IP Address Filtering: Leave blank (optional)
+o	TTL: Choose how long the token lasts (or leave indefinite)
+4.	Create the token:
+o	Click "Continue to summary"
+o	Review settings
+o	Click "Create Token"
+5.	Copy your token:
+o	IMPORTANT: The token is only shown once!
+o	Copy it immediately
+o	It should start with something like Bearer or a random string
+o	Store it securely
+

@@ -1,16 +1,5 @@
-# Ollama data directory
-ollama-data/
-
-# Continue configuration
-.continue/
-
 # OS files
 .DS_Store
 Thumbs.db
 
-# IDE files
-.vscode/
-.idea/
-
-# Docker
-docker-compose.override.yml
+ollama-data

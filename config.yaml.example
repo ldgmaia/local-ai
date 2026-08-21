@@ -1,0 +1,63 @@
+name: Main Config
+version: 1.0.0
+schema: v1
+models:
+  - name: DeepSeek V3.2 (OpenRouter Cloud)
+    provider: openai
+    model: deepseek/deepseek-v3.2
+    apiBase: https://openrouter.ai/api/v1
+    apiKey: AddYourKey
+    roles:
+      - chat
+      - edit
+      - apply
+
+  - name: Qwen 2.5 Coder 32B (Cloudflare Cloud)
+    provider: openai
+    model: "@cf/qwen/qwen2.5-coder-32b-instruct"
+    apiBase: https://api.cloudflare.com/client/v4/accounts/<AddYourKey>/ai/v1
+    apiKey: AddYourKey
+    roles:
+      - chat
+      - edit
+      - apply
+    defaultCompletionOptions:
+      stream: false
+
+  - name: Gemini 3.6 Flash (Google Cloud)
+    provider: gemini
+    model: gemini-3.6-flash
+    apiKey: AddYourKey
+    roles:
+      - chat
+      - edit
+      - apply
+
+  - name: Qwen 2.5 Coder 7B (Local)
+    provider: ollama
+    model: qwen2.5-coder:7b-instruct
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+      - edit
+      - apply
+      - autocomplete
+
+  - name: Qwen 2.5 Coder 14B (Local)
+    provider: ollama
+    model: qwen2.5-coder:14b-instruct
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+      - edit
+      - apply
+
+  - name: DeepSeek Coder 6.7B (Local)
+    provider: ollama
+    model: deepseek-coder:6.7b-instruct
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+      - edit
+      - apply
+      - autocomplete

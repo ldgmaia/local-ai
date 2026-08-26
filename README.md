@@ -58,7 +58,7 @@ docker-compose exec ollama ollama list
 
 ### 5. Open the Web UI
 
-Open your browser and go to: `http://localhost:3000`
+Open your browser and go to: `http://localhost:8085`
 
 On first launch, Open WebUI will prompt you to create an admin account. Once logged in, you can chat with any model pulled into Ollama directly from the browser.
 
@@ -161,7 +161,7 @@ networks:
    ```bash
    docker-compose up -d
    ```
-3. **Open Web UI** at `http://localhost:3000` to chat in the browser
+3. **Open Web UI** at `http://localhost:8085` to chat in the browser
 4. **Open VS Code** and start coding with Continue!
 
 ### Using Continue in VS Code
@@ -336,7 +336,7 @@ docker system prune -a
 ### Open WebUI not accessible
 - Ensure both containers are running: `docker-compose ps`
 - Check logs: `docker-compose logs -f open-webui`
-- Verify port 3000 is not in use: `netstat -ano | findstr :3000`
+- Verify port 3000 is not in use: `netstat -ano | findstr :8085`
 - Open WebUI waits for Ollama to be healthy before starting; wait ~30 seconds after `docker-compose up -d`
 
 ### Reset everything

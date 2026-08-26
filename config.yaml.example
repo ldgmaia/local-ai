@@ -2,11 +2,17 @@ name: Main Config
 version: 1.0.0
 schema: v1
 models:
+  - name: qwen3-coder (Local Server Dell)
+    provider: openai
+    model: qwen3-coder
+    apiBase: http://192.168.50.208:8000/v1
+    apiKey: none
+
   - name: DeepSeek V3.2 (OpenRouter Cloud)
     provider: openai
     model: deepseek/deepseek-v3.2
     apiBase: https://openrouter.ai/api/v1
-    apiKey: AddYourKey
+    apiKey: 
     roles:
       - chat
       - edit
@@ -15,8 +21,8 @@ models:
   - name: Qwen 2.5 Coder 32B (Cloudflare Cloud)
     provider: openai
     model: "@cf/qwen/qwen2.5-coder-32b-instruct"
-    apiBase: https://api.cloudflare.com/client/v4/accounts/<AddYourKey>/ai/v1
-    apiKey: AddYourKey
+    apiBase: https://api.cloudflare.com/client/v4/accounts/0c91dfc3fc3d1e7db743d1b61a9d8f63/ai/v1
+    apiKey: 
     roles:
       - chat
       - edit
@@ -27,7 +33,7 @@ models:
   - name: Gemini 3.6 Flash (Google Cloud)
     provider: gemini
     model: gemini-3.6-flash
-    apiKey: AddYourKey
+    apiKey: 
     roles:
       - chat
       - edit

@@ -1,6 +1,6 @@
-# Local AI Coding Assistant with Ollama + Continue
+# Local AI Coding Assistant with Ollama + Open WebUI + Continue
 
-A fully offline, Docker-based AI coding assistant for VS Code using Ollama and Continue with multiple Qwen and DeepSeek Coder models.
+A fully offline, Docker-based AI coding assistant using Ollama, Open WebUI, and Continue. Runs entirely on CPU — no GPU required.
 
 ## 📋 Prerequisites
 
@@ -56,14 +56,20 @@ Or test via command line:
 docker-compose exec ollama ollama list
 ```
 
-### 5. Install VS Code Extensions
+### 5. Open the Web UI
+
+Open your browser and go to: `http://localhost:3000`
+
+On first launch, Open WebUI will prompt you to create an admin account. Once logged in, you can chat with any model pulled into Ollama directly from the browser.
+
+### 6. Install VS Code Extensions
 
 1. Open VS Code
 2. Go to Extensions (Ctrl+Shift+X)
 3. Search for and install: **Continue - Codestral, Claude, and more**
    - Extension ID: `Continue.continue`
 
-### 6. Configure Continue
+### 7. Configure Continue
 
 1. In VS Code, open the Continue extension settings
 2. Click on the gear icon ⚙️ in the Continue sidebar
@@ -151,11 +157,12 @@ networks:
 ### Starting the System
 
 1. **Start Docker Desktop** (if not already running)
-2. **Start Ollama container** (if not running):
+2. **Start all containers**:
    ```bash
    docker-compose up -d
    ```
-3. **Open VS Code** and start coding!
+3. **Open Web UI** at `http://localhost:3000` to chat in the browser
+4. **Open VS Code** and start coding with Continue!
 
 ### Using Continue in VS Code
 
@@ -179,24 +186,22 @@ networks:
 ```bash
 # View logs
 docker-compose logs -f ollama
+docker-compose logs -f open-webui
 
-# Stop Ollama
+# Stop all services
 docker-compose down
 
-# Restart Ollama
+# Restart all services
 docker-compose restart
 
-# Stop and remove container (keeps data)
-docker-compose down
-
 # Remove everything including data
-docker-compose down -v && rm -rf ollama-data
+docker-compose down -v && rm -rf ollama-data open-webui-data
 
 # Check container status
 docker-compose ps
 
 # View resource usage
-docker stats ollama
+docker stats
 ```
 
 ### Managing Models
@@ -328,11 +333,17 @@ docker-compose exec ollama ollama pull qwen2.5-coder:7b-instruct --verbose
 docker system prune -a
 ```
 
+### Open WebUI not accessible
+- Ensure both containers are running: `docker-compose ps`
+- Check logs: `docker-compose logs -f open-webui`
+- Verify port 3000 is not in use: `netstat -ano | findstr :3000`
+- Open WebUI waits for Ollama to be healthy before starting; wait ~30 seconds after `docker-compose up -d`
+
 ### Reset everything
 ```bash
-# Complete reset (WARNING: deletes all models)
+# Complete reset (WARNING: deletes all models and WebUI data)
 docker-compose down -v
-rm -rf ollama-data
+rm -rf ollama-data open-webui-data
 docker system prune -a
 docker-compose up -d
 # Re-pull models
@@ -350,6 +361,7 @@ your-repo-name/
 ├── docker-compose.yml  # Docker Compose configuration
 ├── config.yaml         # Continue configuration
 ├── ollama-data/        # Ollama models and data (created on first run)
+├── open-webui-data/    # Open WebUI database and settings (created on first run)
 ├── .gitignore          # Git ignore file
 ```
 
@@ -364,6 +376,7 @@ MIT License - See LICENSE file for details
 ## 🔗 Resources
 
 - [Ollama Documentation](https://docs.ollama.com/)
+- [Open WebUI Documentation](https://docs.openwebui.com/)
 - [Continue Documentation](https://docs.continue.dev/)
 - [Qwen2.5 Coder Model](https://ollama.com/library/qwen2.5-coder)
 - [DeepSeek Coder Model](https://ollama.com/library/deepseek-coder)

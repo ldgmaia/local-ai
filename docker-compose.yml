@@ -29,6 +29,8 @@ services:
       - ./open-webui-data:/app/backend/data
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
+      - ENABLE_OLLAMA_API=True
+      - DEFAULT_MODEL_PARAMS={"function_calling":"native"}
     depends_on:
       ollama:
         condition: service_healthy
